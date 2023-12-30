@@ -1,10 +1,14 @@
 # Exp-6-Synchornous-counters - up counter and down counter 
-### AIM: To implement 4 bit up and down counters and validate  functionality.
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+### AIM: 
+To implement 4 bit up and down counters and validate  functionality.
+### Equipment required:
+~~~
+HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
+SOFTWARE REQUIRED:   Quartus prime
+~~~
+### THEORY: 
 
-## UP COUNTER 
+## UP COUNTER: 
 The counter is a digital sequential circuit and here it is a 4 bit counter, which simply means it can count from 0 to 15 and vice versa based upon the direction of counting (up/down). 
 
 The counter (“count“) value will be evaluated at every positive (rising) edge of the clock (“clk“) cycle.
@@ -36,7 +40,7 @@ Four-bit “Up” Counter
 
 
 
-## DOWN COUNTER 
+## DOWN COUNTER: 
 
 As well as counting “up” from zero and increasing or incrementing to some preset value, it is sometimes necessary to count “down” from a predetermined value to zero allowing us to produce an output that activates when the zero count or some other pre-set value is reached.
 
@@ -45,44 +49,75 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
-### Procedure
-/* write all the steps invloved */
+### Procedure:
+~~~
+1.Create a new project in Quartus2 software .
+2.Name the project as uc for upcounter and dc for down counter.
+3.Create a new verilog hdl file in the project file.
+4.Name the module declare as dc and uc for down counter and upcounter.
+5.Within the module declare input and output variables.
+6.Create a loop using if-else with condition parameter as reset.
+7.End the loop.
+8.End the module
+~~~
+### PROGRAM: 
+#### Up Counter:
+~~~
+module upcounter(clk,q1,q2,q3);
+input clk;
+output reg q1,q2,q3;
+always@(posedge clk)
+begin
+q3 = (q1&q2)^q3;
+q2 = q1^q2;
+q1 = 1^q1;
+end
+endmodule
+~~~
+
+#### Down Counter:
+~~~
+module downcounter(clk,q1,q2,q3);
+input clk;
+output reg q1,q2,q3;
+always@(posedge clk)
+begin
+q3 = ((~q1)&(~q2))^q3;
+q2 = (~q1)^q2;
+q1 = 1^q1;
+end
+endmodule
+~~~
+
+## Output:
+
+### State Table:
+
+#### Up Counter:
+![image](https://github.com/ganesh10082006/Exp-7-Synchornous-counters-/assets/151981672/c7b13ec0-6a15-4e2d-9b34-8fca02c901c9)
 
 
+#### Down Counter:
+![image](https://github.com/ganesh10082006/Exp-7-Synchornous-counters-/assets/151981672/58297a1b-3049-4c48-9cdb-fc1c21e91470)
 
-### PROGRAM 
-/*
-Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+### RTL LOGIC UP COUNTER AND DOWN COUNTER:  
 
+#### Up Counter:
+![image](https://github.com/ganesh10082006/Exp-7-Synchornous-counters-/assets/151981672/78b09bf7-5599-4b99-9790-2472273b3d8a)
 
-
-
-
-
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+#### Down Counter:
+![image](https://github.com/ganesh10082006/Exp-7-Synchornous-counters-/assets/151981672/12f70628-83a2-47ab-82ec-5b91b1173f98)
 
 
+### TIMING DIGRAMS FOR UP AND DOWN COUNTER:  
+
+#### Up Counter:
+![image](https://github.com/ganesh10082006/Exp-7-Synchornous-counters-/assets/151981672/73c048c0-3c79-484e-9e37-983ac4af2af1)
+
+#### Down Counter:
+![image](https://github.com/ganesh10082006/Exp-7-Synchornous-counters-/assets/151981672/5dd82d5f-bc86-4eab-a475-5ab5da3f54e6)
 
 
-
-
-
-
-
-### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
-
-### RESULTS 
+### RESULTS: 
+Thus synchornous counters up counter and down counter circuit are studied and the truth table for different logic gates are 
+verified                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
